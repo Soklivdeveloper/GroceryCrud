@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- font-awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <!-- styles -->
+  <link rel="stylesheet" href="/CSS/styles.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+  <title>Grocery Bud</title>
+</head>
+
+<body>
+  <section class="section-center">
+    <form class="grocery-form" action="/" method="post">
+      <p class="alert"></p> 
+      <h3>Grocery Bud</h3>
+      <div class="form-control">
+        <input type="text" id="grocery" placeholder="Grocery Items" name="grocery_item" required>
+        <button class="submit-btn" onclick="mainBtn()">Submit</button>
+      </div>
+    </form>
+    <!-- list -->
+    <% data.forEach((element)=>{ %>
+    <div class="grocery-container">
+      <div class="grocery-list" id="listitem">
+        <article class="grocery-item">
+            <p id="valueOfId" style="display: none;"><%= element.id %></p>
+            <p class="title"><%= element.item_name %></p>
+          <div class="btn-container">
+            <button class="edit-btn" onclick="editBtn(this)">
+              <i class="fas fa-edit"></i>
+            </button>
+            <a href="/delete/<%= element.id %>"><button class="delete-btn">
+              <i class="fas fa-trash"></i>
+            </button></a>
+          </div>
+        </article>
+      </div>
+      <% }); %>
+      <!-- button -->
+      <a href="/deleteAll" style="text-decoration: none;"><button class="clear-btn" onclick="deleteAll()">Clear Items</button></a>
+    </div>
+  </section>  
+</body>
+<script src="/js/newscript.js"></script>
+</html>
